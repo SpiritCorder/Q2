@@ -1,0 +1,48 @@
+﻿@page
+@model StudentManagementSystem.Pages.StudentAddModel
+
+@if(Request.Method == "GET")
+{
+    <h1 class="text-center my-5">Add New Student</h1>
+
+    <form action="" method="post">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="Student Name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Select Course</label>
+            <select class="form-select" aria-label="Default select example" name="course">
+
+                @{
+                    List<MyDataModel> Data = (List<MyDataModel>)ViewData["data"];
+                    foreach (var row in Data)
+                    {
+                        <option value="@row.id">@row.courseName</option>
+                    }
+                }
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mt-3">Add Student</button>
+
+    </form>
+}
+
+@if(Request.Method == "POST" && ViewData.ContainsKey("success"))
+{
+    <p class="my-5 text-center alert alert-success">Student Added</p>
+    <div class="d-flex justify-content-center">
+        <a asp-page="/StudentInfo" class="btn btn-primary">View Details</a>
+    </div>
+    
+}
+

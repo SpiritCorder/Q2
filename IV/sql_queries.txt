@@ -1,0 +1,10 @@
+
+IV.
+
+    A. SELECT * FROM student;
+
+    B. SELECT studentId, name, city FROM student WHERE city='Kandy';
+
+    C. UPDATE student SET city='Galle' WHERE studentId=4;
+
+    D. SELECT * FROM student JOIN course ON student.courseId=course.courseId;
